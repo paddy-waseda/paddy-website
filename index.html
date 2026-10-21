@@ -4,545 +4,221 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="claude:viewport-fit-sides" content="cover">
 <title>Paddy Filder's Tea Party</title>
-<meta name="description" content="早稲田大学公認 国際交流サークル Paddy。留学生と日本人学生が毎週火・金に集まる国際交流コミュニティです。">
+<meta name="description" content="早稲田大学公認 国際交流サークル Paddy。毎週火・金 17:00、学生会館で。">
 <meta name="theme-color" content="#6EC1F7">
 <link rel="icon" href="logo-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Instrument+Serif:ital@1&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap">
 <style>
-/* Layout: mobile-first single column. Sticky top bar with tappable social icons,
-   giant sky-blue "PADDY" hero, fact grid, swipeable event cards, big join buttons. */
+/* Layout: one short mobile scroll. Sticky bar with social icons → giant mixed-type
+   wordmark (flayks) → one-line mission + 3 one-liners (npca) → big numbers → join. */
 :root {
-  --bg: #F4FAFF;
-  --card: #FFFFFF;
-  --ink: #0D2B45;
-  --muted: #4A6780;
-  --line: #CDE6F8;
   --sky: #6EC1F7;
   --sky-deep: #1878C4;
-  --sky-pale: #E3F3FE;
-  --hero-ink: #FFFFFF;
+  --ink: #0C2A44;
+  --bg: #F3FAFF;
+  --card: #FFFFFF;
+  --line: #CFE7F8;
+  --muted: #557189;
   --sun: #FFB845;
-  --sun-ink: #3A2400;
-  --bar: rgba(255, 255, 255, 0.86);
-  --line-green: #06C755;
+  --bar: rgba(255, 255, 255, 0.88);
   --font-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --font-accent: "Instrument Serif", Georgia, serif;
   --font-body: "Zen Kaku Gothic New", "Hiragino Sans", "Noto Sans JP", system-ui, sans-serif;
-  --radius: 18px;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #071827; --card: #0E2236; --ink: #E4F2FD; --muted: #9AB7CF; --line: #1D3D5B;
-    --sky: #0F5A96; --sky-deep: #8CD2FF; --sky-pale: #0D2A43; --hero-ink: #FFFFFF;
-    --sun: #FFC15E; --sun-ink: #3A2400; --bar: rgba(7, 24, 39, 0.86); color-scheme: dark;
+    --sky: #0F5A96; --sky-deep: #8CD2FF; --ink: #E6F3FD; --bg: #071827; --card: #0E2236;
+    --line: #1D3D5B; --muted: #9AB7CF; --sun: #FFC15E; --bar: rgba(7, 24, 39, 0.88); color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #071827; --card: #0E2236; --ink: #E4F2FD; --muted: #9AB7CF; --line: #1D3D5B;
-  --sky: #0F5A96; --sky-deep: #8CD2FF; --sky-pale: #0D2A43; --hero-ink: #FFFFFF;
-  --sun: #FFC15E; --sun-ink: #3A2400; --bar: rgba(7, 24, 39, 0.86); color-scheme: dark;
+  --sky: #0F5A96; --sky-deep: #8CD2FF; --ink: #E6F3FD; --bg: #071827; --card: #0E2236;
+  --line: #1D3D5B; --muted: #9AB7CF; --sun: #FFC15E; --bar: rgba(7, 24, 39, 0.88); color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 120px; }
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.75;
-  -webkit-font-smoothing: antialiased;
-  padding-bottom: 88px;
-}
-body::before {
-  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
-  z-index: 60; background: var(--bar);
-}
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 60; background: var(--bar); }
 img { max-width: 100%; display: block; }
 a { color: inherit; }
+h1, h2, p { margin: 0; }
 :focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; border-radius: 8px; }
-h1, h2, h3 { text-wrap: balance; margin: 0; }
-p { margin: 0; }
+.wrap { max-width: 960px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
 
-.wrap {
-  width: 100%;
-  max-width: 1080px;
-  margin: 0 auto;
-  padding-left: max(16px, env(safe-area-inset-left, 0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px));
-}
+/* top bar */
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: var(--bar); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+.bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding-block: 8px; }
+.mark { width: 40px; height: 40px; border-radius: 12px; background: #FFFFFF; display: grid; place-items: center; box-shadow: 0 2px 8px rgba(24, 120, 196, 0.2); flex: none; }
+.mark img { width: 24px; }
+.icons { display: flex; gap: 8px; align-items: center; }
+.ic { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; color: #FFFFFF; text-decoration: none; transition: transform 0.15s; }
+.ic:active { transform: scale(0.9); }
+.ic svg { width: 22px; height: 22px; }
+.ig { background: radial-gradient(circle at 30% 107%, #FDD86A 0%, #FA8E3C 30%, #E3346F 60%, #A13CC2 100%); }
+.ln { background: #06C755; }
+.li { background: #0A66C2; }
+.lang { height: 44px; min-width: 44px; padding: 0 10px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--card); color: var(--ink); font: 700 13px var(--font-body); letter-spacing: 0.06em; cursor: pointer; }
 
-/* ---------- Top bar ---------- */
-.topbar {
-  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
-  background: var(--bar);
-  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--line);
-}
-.topbar-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 8px; }
-.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; min-width: 0; }
-.brand-mark {
-  width: 40px; height: 40px; border-radius: 12px; background: #FFFFFF; flex: none;
-  display: grid; place-items: center; box-shadow: 0 2px 8px rgba(24, 120, 196, 0.18);
-}
-.brand-mark img { width: 24px; height: auto; }
-.brand-name { font-family: var(--font-display); font-weight: 900; font-size: 26px; letter-spacing: 0.02em; line-height: 1; }
-.brand-sub { display: block; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; color: var(--muted); margin-top: 3px; }
+/* hero */
+.hero { background: var(--sky); color: #FFFFFF; overflow: hidden; }
+.hero .wrap { padding-block: 28px 36px; display: grid; gap: 22px; }
+.status { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; letter-spacing: 0.04em; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--sun); box-shadow: 0 0 0 4px rgba(255, 184, 69, 0.35); flex: none; }
+.word { font-family: var(--font-display); font-weight: 900; text-transform: uppercase; font-size: clamp(72px, 23vw, 210px); line-height: 0.8; white-space: nowrap; letter-spacing: -0.01em; margin-left: -3px; }
+.word i { font-family: var(--font-accent); font-style: italic; font-weight: 400; text-transform: none; letter-spacing: 0; }
+.word .chip { display: inline-block; vertical-align: middle; width: 0.62em; height: 0.62em; border-radius: 0.16em; background: #FFFFFF; margin: 0 0.04em 0.12em; position: relative; }
+.word .chip img { position: absolute; inset: 18%; width: 64%; height: 64%; object-fit: contain; }
+.sub { font-family: var(--font-display); font-weight: 800; font-size: 20px; letter-spacing: 0.06em; }
+.cta { display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 56px; border-radius: 16px; background: var(--sun); color: #3A2400; font: 900 17px var(--font-body); text-decoration: none; }
+.cta svg { width: 22px; height: 22px; }
 
-.socials { display: flex; align-items: center; gap: 8px; flex: none; }
-.social {
-  width: 44px; height: 44px; border-radius: 50%;
-  display: grid; place-items: center; color: #FFFFFF; text-decoration: none;
-  transition: transform 0.15s ease;
-}
-.social:active { transform: scale(0.92); }
-.social svg { width: 22px; height: 22px; }
-.social.ig { background: radial-gradient(circle at 30% 107%, #FDD86A 0%, #FA8E3C 30%, #E3346F 60%, #A13CC2 100%); }
-.social.line { background: var(--line-green); }
-.social.li { background: #0A66C2; }
-.lang {
-  height: 44px; min-width: 44px; padding: 0 12px; border-radius: 999px;
-  border: 1.5px solid var(--line); background: var(--card); color: var(--ink);
-  font: 700 13px/1 var(--font-body); letter-spacing: 0.06em; cursor: pointer;
-}
+/* mission */
+section .wrap { padding-block: 44px 0; display: grid; gap: 18px; }
+.eyebrow { font-family: var(--font-display); font-weight: 900; font-size: 14px; letter-spacing: 0.16em; color: var(--sky-deep); }
+.mission { font-weight: 900; font-size: clamp(30px, 9vw, 52px); line-height: 1.25; }
+.do { list-style: none; margin: 0; padding: 0; display: grid; }
+.do li { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 16px 0; border-top: 1px solid var(--line); font-weight: 900; font-size: 20px; }
+.do li:last-child { border-bottom: 1px solid var(--line); }
+.do span { font-family: var(--font-accent); font-style: italic; font-weight: 400; font-size: 22px; color: var(--sky-deep); }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag { font-size: 14px; font-weight: 700; padding: 6px 12px; border-radius: 999px; background: var(--card); border: 1.5px solid var(--line); }
 
-.nav { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding-bottom: 8px; }
-.nav::-webkit-scrollbar { display: none; }
-.nav a {
-  flex: none; text-decoration: none; font-size: 14px; font-weight: 700;
-  padding: 8px 16px; border-radius: 999px; background: var(--sky-pale); color: var(--ink);
-}
-
-/* ---------- Hero ---------- */
-.hero { background: var(--sky); color: var(--hero-ink); position: relative; overflow: hidden; }
-.hero .wrap { position: relative; z-index: 1; padding-block: 28px 40px; display: grid; gap: 18px; }
-.cloud { position: absolute; background: rgba(255, 255, 255, 0.28); border-radius: 999px; z-index: 0; }
-.cloud.c1 { width: 220px; height: 70px; top: 40px; right: -60px; }
-.cloud.c2 { width: 140px; height: 46px; top: 96px; right: 60px; }
-.cloud.c3 { width: 260px; height: 80px; bottom: 30px; left: -90px; background: rgba(255, 255, 255, 0.18); }
-.eyebrow {
-  display: inline-flex; align-self: start; justify-self: start; gap: 8px; align-items: center;
-  font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
-  background: rgba(255, 255, 255, 0.22); padding: 6px 12px; border-radius: 999px;
-}
-.giant {
-  font-family: var(--font-display); font-weight: 900;
-  font-size: clamp(80px, 27vw, 240px); line-height: 0.82; letter-spacing: -0.01em;
-  margin-left: -4px;
-}
-.giant-sub { font-family: var(--font-display); font-weight: 700; font-size: clamp(22px, 6vw, 34px); letter-spacing: 0.04em; line-height: 1.1; }
-.hero-copy { font-weight: 900; font-size: clamp(24px, 7vw, 40px); line-height: 1.35; }
-.hero-desc { font-size: 15px; max-width: 36em; opacity: 0.95; }
-.hero-actions { display: grid; gap: 10px; margin-top: 6px; }
-
-.btn {
-  display: flex; align-items: center; justify-content: center; gap: 10px;
-  min-height: 56px; padding: 0 22px; border-radius: 16px;
-  font: 900 17px/1.2 var(--font-body); text-decoration: none; border: 0; cursor: pointer;
-  transition: transform 0.15s ease;
-}
-.btn:active { transform: scale(0.98); }
-.btn svg { width: 22px; height: 22px; flex: none; }
-.btn-sun { background: var(--sun); color: var(--sun-ink); }
-.btn-ghost { background: transparent; color: var(--hero-ink); border: 2px solid rgba(255, 255, 255, 0.8); }
-.btn-line { background: var(--line-green); color: #FFFFFF; }
-.btn-ig { background: linear-gradient(100deg, #FA8E3C, #E3346F 55%, #A13CC2); color: #FFFFFF; }
-
-/* ---------- Facts ---------- */
-.facts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: -22px; position: relative; z-index: 2; }
-.fact { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; min-width: 0; }
-.fact.wide { grid-column: 1 / -1; }
-.fact-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: var(--muted); }
-.fact-value { font-weight: 900; font-size: 17px; line-height: 1.4; font-variant-numeric: tabular-nums; }
-.fact-value .num { font-family: var(--font-display); font-size: 34px; line-height: 1; color: var(--sky-deep); }
-
-/* ---------- Sections ---------- */
-section.block .wrap { padding-block: 56px 8px; display: grid; gap: 20px; }
-.kicker { font-family: var(--font-display); font-weight: 900; font-size: 15px; letter-spacing: 0.14em; color: var(--sky-deep); }
-.h2 { font-weight: 900; font-size: clamp(26px, 7vw, 40px); line-height: 1.3; }
-.lead { color: var(--muted); max-width: 38em; }
-
-.points { display: grid; gap: 12px; }
-.point { display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: start; }
-.point-icon {
-  width: 44px; height: 44px; border-radius: 14px; background: var(--sky-pale); color: var(--sky-deep);
-  display: grid; place-items: center;
-}
-.point-icon svg { width: 22px; height: 22px; }
-.point h3 { font-size: 17px; font-weight: 900; line-height: 1.5; }
-.point p { font-size: 14.5px; color: var(--muted); }
-
-.panel { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 20px; display: grid; gap: 12px; }
-.panel h3 { font-size: 20px; font-weight: 900; }
-.time-pill {
-  justify-self: start; display: inline-flex; gap: 8px; align-items: center;
-  background: var(--sky-pale); color: var(--sky-deep); font-weight: 700; font-size: 14px;
-  padding: 6px 12px; border-radius: 999px; font-variant-numeric: tabular-nums;
-}
-.chips { display: flex; flex-wrap: wrap; gap: 8px; }
-.chip { font-size: 13.5px; font-weight: 700; padding: 6px 12px; border-radius: 999px; border: 1.5px solid var(--line); }
-
-.why { display: grid; gap: 10px; }
-.why-item { display: grid; grid-template-columns: 28px 1fr; gap: 12px; padding: 16px 0; border-top: 1px solid var(--line); }
-.why-item:last-child { border-bottom: 1px solid var(--line); }
-.check { width: 28px; height: 28px; border-radius: 50%; background: var(--sun); color: var(--sun-ink); display: grid; place-items: center; margin-top: 2px; }
-.check svg { width: 16px; height: 16px; }
-.why-item h3 { font-size: 17px; font-weight: 900; line-height: 1.5; }
-.why-item p { font-size: 14.5px; color: var(--muted); }
-
-/* swipeable cards */
-.rail {
-  display: grid; grid-auto-flow: column; grid-auto-columns: 78%; gap: 12px;
-  overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px;
-  margin-right: calc(-1 * max(16px, env(safe-area-inset-right, 0px)));
-  padding-right: max(16px, env(safe-area-inset-right, 0px));
-  scrollbar-width: none;
-}
-.rail::-webkit-scrollbar { display: none; }
-.ecard {
-  scroll-snap-align: start; border-radius: var(--radius); padding: 22px 20px; min-height: 210px;
-  display: flex; flex-direction: column; gap: 10px; background: var(--card); border: 1px solid var(--line);
-}
-.ecard:nth-child(1) { background: var(--sky); color: var(--hero-ink); border-color: transparent; }
-.ecard:nth-child(1) p, .ecard:nth-child(1) .etag { color: var(--hero-ink); opacity: 0.92; }
-.etag { font-family: var(--font-display); font-weight: 900; font-size: 14px; letter-spacing: 0.12em; color: var(--sky-deep); }
-.ecard h3 { font-size: 22px; font-weight: 900; line-height: 1.35; }
-.ecard p { font-size: 14.5px; color: var(--muted); }
-.swipe-hint { font-size: 12px; color: var(--muted); font-weight: 700; letter-spacing: 0.06em; }
+/* numbers */
+.nums { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.num { min-width: 0; }
+.num b { display: block; font-family: var(--font-display); font-weight: 900; font-size: clamp(44px, 14vw, 80px); line-height: 0.9; color: var(--sky-deep); font-variant-numeric: tabular-nums; }
+.num small { font-size: 12px; font-weight: 700; color: var(--muted); letter-spacing: 0.04em; }
 
 /* join */
-.join { background: var(--sky-pale); margin-top: 56px; }
-.join .wrap { padding-block: 48px; display: grid; gap: 20px; }
-.join-actions { display: grid; gap: 10px; }
-.handle { font-weight: 700; color: var(--muted); font-size: 14px; text-align: center; }
-.qrs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.qr { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px; display: grid; gap: 8px; text-align: center; font-size: 12.5px; font-weight: 700; color: var(--muted); }
-.qr img { border-radius: 10px; aspect-ratio: 1; object-fit: cover; width: 100%; background: #FFFFFF; }
-
-footer .wrap { padding-block: 32px; display: grid; gap: 14px; justify-items: center; text-align: center; font-size: 13px; color: var(--muted); }
-
-/* sticky join bar (mobile) */
-.dock {
-  position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
-  padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
-  background: var(--bar); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-  border-top: 1px solid var(--line);
-  transform: translateY(110%); transition: transform 0.25s ease;
-}
-.dock.show { transform: none; }
-.dock .btn { min-height: 52px; }
+.join { margin-top: 48px; background: var(--sky); color: #FFFFFF; }
+.join .wrap { padding-block: 40px; display: grid; gap: 18px; }
+.join h2 { font-family: var(--font-display); font-weight: 900; text-transform: uppercase; font-size: clamp(56px, 18vw, 120px); line-height: 0.85; }
+.join h2 i { font-family: var(--font-accent); font-weight: 400; text-transform: none; }
+.where { font-weight: 700; font-size: 15px; }
+.follow { display: flex; gap: 10px; }
+.follow .ic { width: 52px; height: 52px; }
+footer .wrap { padding-block: 20px calc(20px + env(safe-area-inset-bottom, 0px)); font-size: 12px; color: var(--muted); text-align: center; }
 
 @media (min-width: 720px) {
-  body { padding-bottom: 0; }
-  .dock { display: none; }
-  .nav { justify-content: flex-end; }
-  .hero .wrap { padding-block: 48px 72px; }
-  .hero-actions, .join-actions { grid-template-columns: auto auto; justify-content: start; }
-  .facts { grid-template-columns: repeat(4, 1fr); }
-  .fact.wide { grid-column: auto; }
-  .points { grid-template-columns: repeat(3, 1fr); }
-  .point { grid-template-columns: 1fr; }
-  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .why { grid-template-columns: 1fr 1fr; column-gap: 32px; }
-  .why-item:nth-last-child(2) { border-bottom: 1px solid var(--line); }
-  .rail { grid-auto-flow: row; grid-template-columns: repeat(4, 1fr); grid-auto-columns: auto; overflow: visible; margin-right: 0; padding-right: 0; }
-  .swipe-hint { display: none; }
-  .join .wrap { grid-template-columns: 1.2fr 1fr; align-items: center; }
-  .qrs { max-width: 360px; }
+  .cta { justify-self: start; padding: 0 28px; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
 }
-.two { display: grid; gap: 12px; }
-@media (min-width: 720px) { .two { grid-template-columns: 1fr 1fr; gap: 16px; } }
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  * { transition: none !important; }
-}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
 </style>
 
-<header class="topbar">
+<header class="bar">
   <div class="wrap">
-    <div class="topbar-row">
-      <a class="brand" href="#top" aria-label="Paddy トップへ">
-        <span class="brand-mark"><img src="logo-mark.png" alt=""></span>
-        <span>
-          <span class="brand-name">Paddy</span>
-          <span class="brand-sub" data-i18n="nav_badge">早稲田大学公認サークル</span>
-        </span>
+    <a class="mark" href="#top" aria-label="Paddy"><img src="logo-mark.png" alt=""></a>
+    <div class="icons">
+      <a class="ic ig" href="https://www.instagram.com/wasedapaddy/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
       </a>
-      <div class="socials">
-        <a class="social ig" href="https://www.instagram.com/wasedapaddy/" target="_blank" rel="noopener" aria-label="Instagram @wasedapaddy">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
-        </a>
-        <a class="social line" href="https://line.me/ti/g/DmyvrLE2XZ" target="_blank" rel="noopener" aria-label="LINE オープンチャット">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.6 1.1-.5 6-3.6 8.2-6.1 1.5-1.7 2.2-3.3 2.2-4.9C22.4 6.6 17.9 3 12 3z"/><path fill="#06C755" d="M6.4 13.4V8.9h1.1v3.5h1.9v1H6.4zm3.6 0V8.9h1.1v4.5H10zm2.1 0V8.9h1l1.8 2.6V8.9H16v4.5h-1l-1.8-2.6v2.6h-1.1zm4.6 0V8.9h3v1h-1.9v.8h1.8v1h-1.8v.8h1.9v1h-3z"/></svg>
-        </a>
-        <!-- LinkedIn を追加するときは href を書き換えてコメントを外してください
-        <a class="social li" href="https://www.linkedin.com/company/XXXX/" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5.3 8.6h3v10h-3v-10zm1.5-4.8a1.7 1.7 0 110 3.4 1.7 1.7 0 010-3.4zM10.2 8.6h2.9V10c.4-.8 1.4-1.6 2.9-1.6 3.1 0 3.7 2 3.7 4.7v5.5h-3v-4.9c0-1.2 0-2.7-1.6-2.7-1.7 0-1.9 1.3-1.9 2.6v5h-3v-10z"/></svg>
-        </a>
-        -->
-        <button class="lang" id="langToggle" type="button" aria-label="Switch language">EN</button>
-      </div>
+      <a class="ic ln" href="https://line.me/ti/g/DmyvrLE2XZ" target="_blank" rel="noopener" aria-label="LINE">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.6 1.1-.5 6-3.6 8.2-6.1 1.5-1.7 2.2-3.3 2.2-4.9C22.4 6.6 17.9 3 12 3z"/></svg>
+      </a>
+      <a class="ic li" href="https://www.linkedin.com/company/paddy-fielders-tea-party/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5.3 8.6h3v10h-3v-10zm1.5-4.8a1.7 1.7 0 110 3.4 1.7 1.7 0 010-3.4zM10.2 8.6h2.9V10c.4-.8 1.4-1.6 2.9-1.6 3.1 0 3.7 2 3.7 4.7v5.5h-3v-4.9c0-1.2 0-2.7-1.6-2.7-1.7 0-1.9 1.3-1.9 2.6v5h-3v-10z"/></svg>
+      </a>
+      <button class="lang" id="langToggle" type="button" aria-label="Switch language">EN</button>
     </div>
-    <nav class="nav" aria-label="ページ内メニュー">
-      <a href="#about" data-i18n="nav_about">活動内容</a>
-      <a href="#why" data-i18n="nav_features">特徴</a>
-      <a href="#events" data-i18n="nav_events">イベント</a>
-      <a href="#join" data-i18n="nav_join">参加方法</a>
-    </nav>
   </div>
 </header>
 
 <main id="top">
-  <section class="hero" id="hero">
-    <span class="cloud c1"></span><span class="cloud c2"></span><span class="cloud c3"></span>
+  <div class="hero">
     <div class="wrap">
-      <span class="eyebrow" data-i18n="hero_badge">早稲田大学公認 国際交流サークル</span>
+      <p class="status"><span class="dot"></span><span data-i18n="status">毎週 火・金 17:00 / 学生会館</span></p>
       <div>
-        <h1 class="giant">PADDY</h1>
-        <p class="giant-sub">Paddy Filder's Tea Party</p>
+        <h1 class="word" aria-label="Paddy">Pa<i>d</i><span class="chip"><img src="logo-mark.png" alt=""></span>dy</h1>
+        <p class="sub">FILDER'S TEA PARTY</p>
       </div>
-      <p class="hero-copy" data-i18n="hero_copy1">「世界中に友達を。」</p>
-      <p class="hero-desc" data-i18n="hero_copy2">Paddyは、早稲田大学の中で最も留学生が多いサークル。留学生たちと日常の会話から特別なイベントまで一緒に楽しめる国際交流コミュニティです。</p>
-      <div class="hero-actions">
-        <a class="btn btn-sun" href="https://line.me/ti/g/DmyvrLE2XZ" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.6 1.1-.5 6-3.6 8.2-6.1 1.5-1.7 2.2-3.3 2.2-4.9C22.4 6.6 17.9 3 12 3z"/></svg>
-          <span data-i18n="line_btn">LINEで参加する</span>
-        </a>
-        <a class="btn btn-ghost" href="#about" data-i18n="explore_btn">活動を見る</a>
-      </div>
-    </div>
-  </section>
-
-  <div class="wrap">
-    <div class="facts">
-      <div class="fact wide">
-        <div class="fact-label" data-i18n="regular_activity_label">定期活動</div>
-        <div class="fact-value" data-i18n="regular_activity_value">毎週 火曜・金曜 17:00–18:30</div>
-      </div>
-      <div class="fact wide">
-        <div class="fact-label" data-i18n="location_label">活動場所</div>
-        <div class="fact-value" data-i18n="location_value">早稲田大学 学生会館</div>
-      </div>
-      <div class="fact">
-        <div class="fact-label" data-i18n="members_label">所属人数</div>
-        <div class="fact-value"><span class="num">173</span></div>
-      </div>
-      <div class="fact">
-        <div class="fact-label" data-i18n="fee_label">入会費 / 継続費</div>
-        <div class="fact-value">¥3,000 / ¥1,000</div>
-      </div>
+      <a class="cta" href="https://line.me/ti/g/DmyvrLE2XZ" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.6 1.1-.5 6-3.6 8.2-6.1 1.5-1.7 2.2-3.3 2.2-4.9C22.4 6.6 17.9 3 12 3z"/></svg>
+        <span data-i18n="join">LINEで参加する</span>
+      </a>
     </div>
   </div>
 
-  <section class="block" id="about">
-    <div class="wrap">
-      <span class="kicker">ABOUT PADDY</span>
-      <h2 class="h2" data-i18n="about_title">Paddyでできること</h2>
-      <p class="lead" data-i18n="about_desc">日常の英会話からイベントでの交流まで、Paddyでは自然なコミュニケーションを通じて友達の輪を広げられます。</p>
-
-      <div class="points">
-        <div class="point">
-          <span class="point-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v10H9l-5 4V5z"/></svg></span>
-          <div><h3 data-i18n="feature1_title">日常から英語を使える</h3><p data-i18n="feature1_desc">会話ベースの活動が中心だから、授業では得にくい自然な英語のやりとりを楽しめます。</p></div>
-        </div>
-        <div class="point">
-          <span class="point-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg></span>
-          <div><h3 data-i18n="feature2_title">国際交流らしい出会いがある</h3><p data-i18n="feature2_desc">留学生と日本人学生がフラットにつながれるので、新しい価値観や文化に触れやすい環境です。</p></div>
-        </div>
-        <div class="point">
-          <span class="point-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.2-4 4.2-6 8-6s6.8 2 8 6"/></svg></span>
-          <div><h3 data-i18n="feature3_title">初参加でも入りやすい</h3><p data-i18n="feature3_desc">1人参加でもなじみやすく、国際サークルが初めての人にもおすすめです。</p></div>
-        </div>
-      </div>
-
-      <div class="two">
-        <div class="panel">
-          <h3 data-i18n="usual_title">定期活動</h3>
-          <span class="time-pill" data-i18n="usual_time">毎週 火曜・金曜 17:00〜18:30</span>
-          <p data-i18n="usual_desc">火曜・金曜の放課後は、英語を中心に交流する定期活動。授業のような堅さではなく、友達をつくる延長で自然に言葉が出てきます。</p>
-        </div>
-        <div class="panel">
-          <h3 data-i18n="events_title">イベント</h3>
-          <p data-i18n="events_desc">定期活動に加えて、小規模のイベントや月ごとの特別企画も開催。国際サークルらしいワクワク感は、毎週の活動だけで終わりません。</p>
-          <div class="chips">
-            <span class="chip" data-i18n="event_item1">季節ごとのパーティー</span>
-            <span class="chip" data-i18n="event_item2">ご飯会</span>
-            <span class="chip" data-i18n="event_item3">留学生との観光企画</span>
-            <span class="chip" data-i18n="event_item4">月イベント</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="block" id="why">
-    <div class="wrap">
-      <span class="kicker">WHY PADDY</span>
-      <h2 class="h2" data-i18n="why_title">Paddyの特徴</h2>
-      <p class="lead" data-i18n="why_desc">入りやすさ、安心感、国際感。この3つがそろっているから、初めてでも自然に楽しめます。</p>
-      <div class="why">
-        <div class="why-item"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><div><h3 data-i18n="why1_title">英語が苦手でもOK</h3><p data-i18n="why1_desc">完璧に話せなくても大丈夫。交流しながら少しずつ慣れていけます。</p></div></div>
-        <div class="why-item"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><div><h3 data-i18n="why2_title">1人参加が多い</h3><p data-i18n="why2_desc">1人で来る人も多く、最初の一歩を踏み出しやすい雰囲気があります。</p></div></div>
-        <div class="why-item"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><div><h3 data-i18n="why3_title">他大学歓迎</h3><p data-i18n="why3_desc">早稲田だけで閉じない、広がりのある交流が魅力です。</p></div></div>
-        <div class="why-item"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><div><h3 data-i18n="why4_title">公認サークルで安心</h3><p data-i18n="why4_desc">大学公認だからこそ、参加のハードルが低く安心して関われます。</p></div></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="block" id="events">
-    <div class="wrap">
-      <span class="kicker">LIFE IN PADDY</span>
-      <h2 class="h2" data-i18n="life_title">国際サークルらしい毎日を</h2>
-      <p class="lead" data-i18n="life_desc">Paddyの魅力は、イベントの数だけではなく、普段の会話そのものが刺激になること。英語を話す、文化を知る、友達ができる。その全部が自然につながっています。</p>
-      <div class="rail" aria-label="イベントの種類">
-        <article class="ecard"><span class="etag">SMALL EVENT</span><h3 data-i18n="card1_title">ゲームで交流</h3><p data-i18n="card1_desc">小規模のイベント企画。英語が苦手な人や、初参加の人にもぴったりです。</p></article>
-        <article class="ecard"><span class="etag">MONTHLY EVENT</span><h3 data-i18n="card2_title">季節のパーティー</h3><p data-i18n="card2_desc">月ごとの特別イベントで、Paddyならではの国際的な盛り上がりを楽しめます。</p></article>
-        <article class="ecard"><span class="etag">GLOBAL MOMENT</span><h3 data-i18n="card3_title">カルチャー交流</h3><p data-i18n="card3_desc">文化を知ること自体がコンテンツになるのが、国際サークルのいちばんの面白さです。</p></article>
-        <article class="ecard"><span class="etag">COMMUNITY</span><h3 data-i18n="card4_title">新しい友達</h3><p data-i18n="card4_desc">日本人も留学生も関係なく、大学生活を少し広げてくれる出会いがあります。</p></article>
-      </div>
-      <span class="swipe-hint" data-i18n="swipe">← 横にスワイプ →</span>
-    </div>
-  </section>
-
-  <section class="join" id="join">
-    <div class="wrap">
+  <section>
+    <div class="wrap two">
       <div style="display:grid;gap:14px">
-        <span class="kicker">JOIN PADDY</span>
-        <h2 class="h2" data-i18n="join_title">まずは気軽に参加してみよう</h2>
-        <p class="lead" data-i18n="join_desc">見学でも、初参加でも大丈夫。国際交流に少しでも興味があれば入りやすいコミュニティです。</p>
-        <div class="join-actions">
-          <a class="btn btn-line" href="https://line.me/ti/g/DmyvrLE2XZ" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.6 1.1-.5 6-3.6 8.2-6.1 1.5-1.7 2.2-3.3 2.2-4.9C22.4 6.6 17.9 3 12 3z"/></svg>
-            <span data-i18n="line_btn">LINEで参加する</span>
-          </a>
-          <a class="btn btn-ig" href="https://www.instagram.com/wasedapaddy/" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
-            <span data-i18n="instagram_btn">Instagramを見る</span>
-          </a>
-        </div>
-        <p class="handle">@wasedapaddy</p>
+        <span class="eyebrow" data-i18n="eyebrow">早稲田大学公認 国際交流サークル</span>
+        <p class="mission" data-i18n="mission">世界中に、友達を。</p>
       </div>
-      <div class="qrs">
-        <div class="qr"><img src="S__24264707.jpg" alt="LINE QRコード" loading="lazy"><span data-i18n="line_qr">LINE QR</span></div>
-        <div class="qr"><img src="S__24264708.jpg" alt="Instagram QRコード" loading="lazy" style="object-position:50% 45%"><span>Instagram QR</span></div>
+      <div style="display:grid;gap:16px">
+        <ul class="do">
+          <li><b data-i18n="do1">英語で話す</b><span>talk</span></li>
+          <li><b data-i18n="do2">文化を知る</b><span>share</span></li>
+          <li><b data-i18n="do3">友達ができる</b><span>connect</span></li>
+        </ul>
+        <div class="tags">
+          <span class="tag" data-i18n="tag1">英語が苦手でもOK</span>
+          <span class="tag" data-i18n="tag2">1人参加OK</span>
+          <span class="tag" data-i18n="tag3">他大学歓迎</span>
+        </div>
       </div>
     </div>
   </section>
+
+  <section>
+    <div class="wrap">
+      <div class="nums">
+        <div class="num"><b>173</b><small data-i18n="n1">メンバー</small></div>
+        <div class="num"><b>2<span style="font-size:.5em">×</span></b><small data-i18n="n2">毎週の活動</small></div>
+        <div class="num"><b>¥3K</b><small data-i18n="n3">入会費</small></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="join" id="join">
+    <div class="wrap">
+      <h2>Come <i>say</i><br>hi.</h2>
+      <p class="where" data-i18n="where">火・金 17:00–18:30 / 早稲田大学 学生会館</p>
+      <a class="cta" href="https://line.me/ti/g/DmyvrLE2XZ" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.6 1.1-.5 6-3.6 8.2-6.1 1.5-1.7 2.2-3.3 2.2-4.9C22.4 6.6 17.9 3 12 3z"/></svg>
+        <span data-i18n="join">LINEで参加する</span>
+      </a>
+      <div class="follow">
+        <a class="ic ig" href="https://www.instagram.com/wasedapaddy/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+        <a class="ic li" href="https://www.linkedin.com/company/paddy-fielders-tea-party/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5.3 8.6h3v10h-3v-10zm1.5-4.8a1.7 1.7 0 110 3.4 1.7 1.7 0 010-3.4zM10.2 8.6h2.9V10c.4-.8 1.4-1.6 2.9-1.6 3.1 0 3.7 2 3.7 4.7v5.5h-3v-4.9c0-1.2 0-2.7-1.6-2.7-1.7 0-1.9 1.3-1.9 2.6v5h-3v-10z"/></svg></a>
+      </div>
+    </div>
+  </div>
 </main>
 
-<footer>
-  <div class="wrap">
-    <div class="socials">
-      <a class="social ig" href="https://www.instagram.com/wasedapaddy/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
-      <a class="social line" href="https://line.me/ti/g/DmyvrLE2XZ" target="_blank" rel="noopener" aria-label="LINE"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.6 1.1-.5 6-3.6 8.2-6.1 1.5-1.7 2.2-3.3 2.2-4.9C22.4 6.6 17.9 3 12 3z"/></svg></a>
-    </div>
-    <p>© 2026 Paddy – Waseda University Official Circle<br>By Taiyo</p>
-  </div>
-</footer>
-
-<div class="dock" id="dock" aria-hidden="true">
-  <a class="btn btn-sun" href="https://line.me/ti/g/DmyvrLE2XZ" target="_blank" rel="noopener" tabindex="-1">
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.6 1.1-.5 6-3.6 8.2-6.1 1.5-1.7 2.2-3.3 2.2-4.9C22.4 6.6 17.9 3 12 3z"/></svg>
-    <span data-i18n="line_btn">LINEで参加する</span>
-  </a>
-</div>
+<footer><div class="wrap">© 2026 Paddy · Waseda University Official Circle · By Taiyo</div></footer>
 
 <script>
 (function () {
   var dict = {
-    nav_badge: ['早稲田大学公認サークル', 'WASEDA OFFICIAL CIRCLE'],
-    nav_about: ['活動内容', 'About'],
-    nav_features: ['特徴', 'Features'],
-    nav_events: ['イベント', 'Events'],
-    nav_join: ['参加方法', 'Join'],
-    hero_badge: ['早稲田大学公認 国際交流サークル', 'Waseda University Official International Circle'],
-    hero_copy1: ['「世界中に友達を。」', 'Make friends from all over the world.'],
-    hero_copy2: ['Paddyは、早稲田大学の中で最も留学生が多いサークル。留学生たちと日常の会話から特別なイベントまで一緒に楽しめる国際交流コミュニティです。', 'Paddy is an international community where Japanese and international students connect naturally and enjoy everything from casual conversations to memorable events together.'],
-    line_btn: ['LINEで参加する', 'Join via LINE'],
-    explore_btn: ['活動を見る', 'Explore activities'],
-    regular_activity_label: ['定期活動', 'Regular activities'],
-    regular_activity_value: ['毎週 火曜・金曜 17:00–18:30', 'Every Tue & Fri, 17:00–18:30'],
-    location_label: ['活動場所', 'Location'],
-    location_value: ['早稲田大学 学生会館', 'Waseda University Student Center'],
-    members_label: ['所属人数', 'Members'],
-    fee_label: ['入会費 / 継続費', 'Joining / renewal fee'],
-    about_title: ['Paddyでできること', 'What you can do in Paddy'],
-    about_desc: ['日常の英会話からイベントでの交流まで、Paddyでは自然なコミュニケーションを通じて友達の輪を広げられます。', 'From everyday conversations to special events, Paddy helps you build real friendships through natural communication.'],
-    feature1_title: ['日常から英語を使える', 'Use English naturally'],
-    feature1_desc: ['会話ベースの活動が中心だから、授業では得にくい自然な英語のやりとりを楽しめます。', 'Our activities are conversation-based, so you practice the kind of English you rarely get to use in class.'],
-    feature2_title: ['国際交流らしい出会いがある', 'Meet people from around the world'],
-    feature2_desc: ['留学生と日本人学生がフラットにつながれるので、新しい価値観や文化に触れやすい環境です。', 'Japanese and international students connect as equals, so new perspectives and cultures are always close by.'],
-    feature3_title: ['初参加でも入りやすい', 'Easy for first-timers'],
-    feature3_desc: ['1人参加でもなじみやすく、国際サークルが初めての人にもおすすめです。', 'Lots of people come on their own, so it feels welcoming even if this is your first international circle.'],
-    usual_title: ['定期活動', 'Regular sessions'],
-    usual_time: ['毎週 火曜・金曜 17:00〜18:30', 'Every Tue & Fri, 17:00–18:30'],
-    usual_desc: ['火曜・金曜の放課後は、英語を中心に交流する定期活動。授業のような堅さではなく、友達をつくる延長で自然に言葉が出てきます。', 'On Tuesday and Friday evenings we meet for sessions built around English conversation. It feels less like a class and more like making new friends.'],
-    events_title: ['イベント', 'Events'],
-    events_desc: ['定期活動に加えて、小規模のイベントや月ごとの特別企画も開催。国際サークルらしいワクワク感は、毎週の活動だけで終わりません。', 'Alongside regular sessions we host small events and monthly specials, so the fun goes well beyond weekly meetings.'],
-    event_item1: ['季節ごとのパーティー', 'Seasonal parties'],
-    event_item2: ['ご飯会', 'Dinner parties'],
-    event_item3: ['留学生との観光企画', 'Sightseeing with international students'],
-    event_item4: ['月イベント', 'Monthly events'],
-    why_title: ['Paddyの特徴', 'Why Paddy'],
-    why_desc: ['入りやすさ、安心感、国際感。この3つがそろっているから、初めてでも自然に楽しめます。', 'Easy to join, welcoming, and genuinely international. That is why even first-timers feel at home.'],
-    why1_title: ['英語が苦手でもOK', 'No need to be fluent'],
-    why1_desc: ['完璧に話せなくても大丈夫。交流しながら少しずつ慣れていけます。', 'Perfect English is not required. You get comfortable little by little.'],
-    why2_title: ['1人参加が多い', 'Many people come alone'],
-    why2_desc: ['1人で来る人も多く、最初の一歩を踏み出しやすい雰囲気があります。', 'Lots of members come by themselves, so the first step is easy.'],
-    why3_title: ['他大学歓迎', 'Other universities welcome'],
-    why3_desc: ['早稲田だけで閉じない、広がりのある交流が魅力です。', 'Paddy is not limited to Waseda, which makes the community broader and more diverse.'],
-    why4_title: ['公認サークルで安心', 'Officially recognized'],
-    why4_desc: ['大学公認だからこそ、参加のハードルが低く安心して関われます。', 'As an official university circle, Paddy is trustworthy and easy to join.'],
-    life_title: ['国際サークルらしい毎日を', 'Everyday global connections'],
-    life_desc: ['Paddyの魅力は、イベントの数だけではなく、普段の会話そのものが刺激になること。英語を話す、文化を知る、友達ができる。その全部が自然につながっています。', 'What makes Paddy special is how meaningful even everyday conversations become. Speaking English, learning about cultures, and making friends all happen naturally.'],
-    card1_title: ['ゲームで交流', 'Fun games'],
-    card1_desc: ['小規模のイベント企画。英語が苦手な人や、初参加の人にもぴったりです。', 'A smaller, relaxed format that is perfect for your first time.'],
-    card2_title: ['季節のパーティー', 'Seasonal parties'],
-    card2_desc: ['月ごとの特別イベントで、Paddyならではの国際的な盛り上がりを楽しめます。', 'Monthly specials full of the international energy that makes Paddy fun.'],
-    card3_title: ['カルチャー交流', 'Culture exchange'],
-    card3_desc: ['文化を知ること自体がコンテンツになるのが、国際サークルのいちばんの面白さです。', 'Getting to know other cultures is the best part of an international circle.'],
-    card4_title: ['新しい友達', 'New friends'],
-    card4_desc: ['日本人も留学生も関係なく、大学生活を少し広げてくれる出会いがあります。', 'Wherever you are from, you will meet people who make university life bigger.'],
-    swipe: ['← 横にスワイプ →', '← Swipe →'],
-    join_title: ['まずは気軽に参加してみよう', 'Come and join us'],
-    join_desc: ['見学でも、初参加でも大丈夫。国際交流に少しでも興味があれば入りやすいコミュニティです。', 'Drop by to watch or jump right in. If you are curious about international exchange, you are welcome.'],
-    instagram_btn: ['Instagramを見る', 'See our Instagram'],
-    line_qr: ['LINE QR', 'LINE QR']
+    status: ['毎週 火・金 17:00 / 学生会館', 'Tue & Fri 17:00 / Student Center'],
+    join: ['LINEで参加する', 'Join via LINE'],
+    eyebrow: ['早稲田大学公認 国際交流サークル', 'Waseda official international circle'],
+    mission: ['世界中に、友達を。', 'Friends from all over the world.'],
+    do1: ['英語で話す', 'Speak English'],
+    do2: ['文化を知る', 'Discover cultures'],
+    do3: ['友達ができる', 'Make friends'],
+    tag1: ['英語が苦手でもOK', 'Any English level'],
+    tag2: ['1人参加OK', 'Come alone'],
+    tag3: ['他大学歓迎', 'All universities'],
+    n1: ['メンバー', 'members'],
+    n2: ['毎週の活動', 'meetups / week'],
+    n3: ['入会費', 'joining fee'],
+    where: ['火・金 17:00–18:30 / 早稲田大学 学生会館', 'Tue & Fri 17:00–18:30 / Waseda Student Center']
   };
-  var root = document.documentElement;
-  var toggle = document.getElementById('langToggle');
-  var lang = 'ja';
+  var root = document.documentElement, t = document.getElementById('langToggle'), lang = 'ja';
   try { lang = localStorage.getItem('paddy-lang') || 'ja'; } catch (e) {}
-  function apply(next) {
-    lang = next;
-    root.lang = next;
-    toggle.textContent = next === 'ja' ? 'EN' : 'JP';
-    var i = next === 'ja' ? 0 : 1;
-    document.querySelectorAll('[data-i18n]').forEach(function (el) {
-      var v = dict[el.getAttribute('data-i18n')];
-      if (v) el.textContent = v[i];
-    });
-    try { localStorage.setItem('paddy-lang', next); } catch (e) {}
+  function apply(n) {
+    lang = n; root.lang = n; t.textContent = n === 'ja' ? 'EN' : 'JP';
+    var i = n === 'ja' ? 0 : 1;
+    document.querySelectorAll('[data-i18n]').forEach(function (el) { var v = dict[el.getAttribute('data-i18n')]; if (v) el.textContent = v[i]; });
+    try { localStorage.setItem('paddy-lang', n); } catch (e) {}
   }
-  toggle.addEventListener('click', function () { apply(lang === 'ja' ? 'en' : 'ja'); });
+  t.addEventListener('click', function () { apply(lang === 'ja' ? 'en' : 'ja'); });
   apply(lang);
-
-  var dock = document.getElementById('dock');
-  var hero = document.getElementById('hero');
-  var join = document.getElementById('join');
-  if ('IntersectionObserver' in window) {
-    var heroVisible = true, joinVisible = false;
-    var update = function () {
-      var on = !heroVisible && !joinVisible;
-      dock.classList.toggle('show', on);
-      dock.setAttribute('aria-hidden', on ? 'false' : 'true');
-    };
-    new IntersectionObserver(function (e) { heroVisible = e[0].isIntersecting; update(); }).observe(hero);
-    new IntersectionObserver(function (e) { joinVisible = e[0].isIntersecting; update(); }).observe(join);
-  }
 })();
 </script>
 
