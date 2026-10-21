@@ -9,7 +9,7 @@
 <link rel="icon" href="logo-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Instrument+Serif:ital@0;1&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap">
 <style>
 /* Layout (after flayks): solid sky ground, giant condensed headings with serif-italic
    letter swaps, status line, big numbered list sections, counters, short contact close. */
@@ -22,7 +22,7 @@
   --rule: rgba(6, 43, 74, 0.22);
   --bar: rgba(138, 207, 250, 0.9);
   --font-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
-  --font-accent: "Instrument Serif", Georgia, serif;
+  --font-accent: var(--font-body);
   --font-body: "Zen Kaku Gothic New", "Hiragino Sans", "Noto Sans JP", system-ui, sans-serif;
 }
 @media (prefers-color-scheme: dark) {
@@ -49,7 +49,7 @@ ul { padding: 0; list-style: none; }
 
 /* italic letter swaps, flayks-style */
 .d { font-family: var(--font-display); font-weight: 900; text-transform: uppercase; line-height: 0.82; letter-spacing: -0.005em; }
-.d i { font-family: var(--font-accent); font-weight: 400; font-style: italic; text-transform: none; letter-spacing: 0; }
+.d i { font-family: var(--font-accent); font-weight: 400; font-style: normal; text-transform: none; letter-spacing: 0; }
 
 /* top bar */
 .bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: var(--bar); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
@@ -72,11 +72,11 @@ ul { padding: 0; list-style: none; }
 .status { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 13px; font-weight: 700; }
 .status span { display: inline-flex; align-items: center; gap: 7px; }
 .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--coral); box-shadow: 0 0 0 4px rgba(255, 131, 112, 0.3); }
-.hero h1 { font-size: clamp(68px, 21vw, 180px); }
+.hero h1 { font-size: clamp(56px, 17vw, 150px); line-height: 0.88; }
 .chip { display: inline-block; vertical-align: middle; width: 0.66em; height: 0.82em; border-radius: 0.1em; background: var(--cream); margin: 0 0.03em 0.08em; position: relative; overflow: hidden; }
 .chip img { position: absolute; inset: 22% 20%; width: 60%; height: 56%; object-fit: contain; }
 .chip.c2 { background: var(--coral); }
-.chip.c2 b { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--font-accent); font-style: italic; font-weight: 400; font-size: 0.5em; color: var(--cream); text-transform: none; }
+.chip.c2 b { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--font-accent); font-style: normal; font-weight: 400; font-size: 0.5em; color: var(--cream); text-transform: none; }
 .intro { font-size: 16px; font-weight: 700; max-width: 30em; }
 .cta { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 56px; padding: 0 26px; border-radius: 6px; background: var(--coral); color: #2B0A04; font: 900 17px var(--font-body); text-decoration: none; }
 .cta svg { width: 22px; height: 22px; }
@@ -85,14 +85,14 @@ ul { padding: 0; list-style: none; }
 
 /* section heading */
 .sec { padding-block: 56px 0; display: grid; gap: 22px; }
-.sec > h2 { font-size: clamp(64px, 19vw, 150px); }
+.sec > h2 { font-size: clamp(48px, 15vw, 130px); overflow-wrap: anywhere; }
 .lead { font-weight: 700; color: var(--soft); max-width: 30em; }
 
 /* activities: flayks project blocks */
 .proj { display: grid; gap: 12px; padding-top: 18px; border-top: 2px solid var(--ink); }
 .proj-top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
 .proj h3 { font-family: var(--font-display); font-weight: 900; font-size: clamp(36px, 11vw, 64px); line-height: 0.9; text-transform: uppercase; }
-.proj .no { font-family: var(--font-accent); font-style: italic; font-size: 22px; }
+.proj .no { font-family: var(--font-accent); font-style: normal; font-size: 22px; }
 .proj h4 { margin: 0; font-size: 20px; font-weight: 900; line-height: 1.4; }
 .proj p { color: var(--soft); font-weight: 500; }
 .pill { justify-self: start; background: var(--cream); color: #062B4A; font-weight: 900; font-size: 14px; padding: 6px 12px; border-radius: 999px; font-variant-numeric: tabular-nums; }
@@ -109,7 +109,7 @@ ul { padding: 0; list-style: none; }
 .counts { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 16px; }
 .count { min-width: 0; }
 .count b { display: block; font-family: var(--font-display); font-weight: 900; font-size: clamp(40px, 12vw, 88px); line-height: 0.9; font-variant-numeric: tabular-nums; }
-.count b small { font-family: var(--font-accent); font-style: italic; font-weight: 400; font-size: 0.5em; }
+.count b small { font-family: var(--font-accent); font-style: normal; font-weight: 400; font-size: 0.5em; }
 .count span { font-size: 13px; font-weight: 700; color: var(--soft); }
 .vibes { display: grid; gap: 10px; }
 .vibe { background: var(--cream); color: #062B4A; border-radius: 6px; padding: 16px; display: grid; gap: 2px; }
@@ -123,12 +123,12 @@ ul { padding: 0; list-style: none; }
 .rows .left { display: grid; gap: 2px; min-width: 0; }
 .rows b { font-size: 20px; font-weight: 900; }
 .rows span { font-size: 13.5px; color: var(--soft); font-weight: 500; }
-.rows em { font-family: var(--font-accent); font-style: italic; font-size: 16px; white-space: nowrap; flex: none; }
+.rows em { font-family: var(--font-accent); font-style: normal; font-size: 16px; white-space: nowrap; flex: none; }
 
 /* join */
 .join { margin-top: 64px; background: var(--ink); color: var(--ground); }
 .join .wrap { padding-block: 48px 40px; display: grid; gap: 22px; }
-.join h2 { font-size: clamp(64px, 19vw, 150px); }
+.join h2 { font-size: clamp(48px, 15vw, 130px); }
 .join .lead { color: var(--ground); opacity: 0.85; }
 .join .cta.alt { color: var(--ground); border-color: var(--ground); }
 .qrs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 380px; }
@@ -170,16 +170,15 @@ footer .wrap { padding-block: 16px calc(20px + env(safe-area-inset-bottom, 0px))
       <span><span class="dot"></span><span data-i18n="status1">火・金 17:00–18:30 / 学生会館</span></span>
       <span data-i18n="status2">新メンバー募集中</span>
     </p>
-    <h1 class="d" aria-label="Friends from all over the world">F<i>r</i>iends<br><span class="chip"><img src="logo-mark.png" alt=""></span>F<i>r</i>om<br>A<i>l</i>l <span class="chip c2"><b>&amp;</b></span><br>O<i>v</i>er the<br>W<i>o</i>rld</h1>
+    <h1 class="d" aria-label="Friends from all over the world">Friends<br>From<br>All<br>Over the<br>World</h1>
     <p class="intro" data-i18n="intro">早稲田大学公認の国際交流サークル。留学生と日本人学生が、毎日の会話からイベントまで一緒に楽しむ場所。</p>
     <div class="ctas">
-      <a class="cta" href="#join"><span data-i18n="join_btn">参加する</span></a>
       <a class="cta alt" href="#activities"><span data-i18n="explore_btn">活動を見る</span></a>
     </div>
   </div>
 
   <section class="wrap sec" id="activities">
-    <h2 class="d">Ac<i>t</i>ivi<i>t</i>ies</h2>
+    <h2 class="d">Activities</h2>
     <div class="two" style="gap:28px">
       <article class="proj">
         <div class="proj-top"><h3 data-i18n="p1_title">定期活動</h3><span class="no">01</span></div>
@@ -202,7 +201,7 @@ footer .wrap { padding-block: 16px calc(20px + env(safe-area-inset-bottom, 0px))
   </section>
 
   <section class="wrap sec" id="why">
-    <h2 class="d">W<i>h</i>y Pa<i>d</i>dy</h2>
+    <h2 class="d">Why Paddy</h2>
     <p class="lead" data-i18n="why_lead">入りやすい。安心。国際的。</p>
     <ul class="list two" style="column-gap:40px">
       <li><b data-i18n="w1">日常で英語</b><span data-i18n="w1d">授業にない、生の英会話</span></li>
@@ -215,7 +214,7 @@ footer .wrap { padding-block: 16px calc(20px + env(safe-area-inset-bottom, 0px))
   </section>
 
   <section class="wrap sec" id="numbers">
-    <h2 class="d">N<i>u</i>mbers</h2>
+    <h2 class="d">Numbers</h2>
     <div class="counts">
       <div class="count"><b>173</b><span data-i18n="c1">メンバー</span></div>
       <div class="count"><b>2<small>×</small></b><span data-i18n="c2">毎週の活動(火・金)</span></div>
@@ -230,7 +229,7 @@ footer .wrap { padding-block: 16px calc(20px + env(safe-area-inset-bottom, 0px))
   </section>
 
   <section class="wrap sec" id="life">
-    <h2 class="d">Li<i>f</i>e in Pa<i>d</i>dy</h2>
+    <h2 class="d">Life in Paddy</h2>
     <p class="lead" data-i18n="life_lead">話す、知る、友達になる。全部が自然につながる。</p>
     <ul class="rows">
       <li><div class="left"><b data-i18n="l1">ゲームで交流</b><span data-i18n="l1d">初参加にもぴったりの少人数企画</span></div><em>Small event</em></li>
@@ -243,13 +242,8 @@ footer .wrap { padding-block: 16px calc(20px + env(safe-area-inset-bottom, 0px))
   <div class="join" id="join">
     <div class="wrap">
       <div style="display:grid;gap:20px">
-        <h2 class="d">J<i>o</i>in the<br>tea <i>p</i>arty</h2>
+        <h2 class="d">Join the<br>tea party</h2>
         <p class="lead" data-i18n="join_lead">見学でも、初参加でも大歓迎。</p>
-        <div class="ctas">
-          <a class="cta" href="https://line.me/ti/g/DmyvrLE2XZ" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.6 1.1-.5 6-3.6 8.2-6.1 1.5-1.7 2.2-3.3 2.2-4.9C22.4 6.6 17.9 3 12 3z"/></svg><span data-i18n="line_btn">LINEで参加する</span></a>
-          <a class="cta alt" href="https://www.instagram.com/wasedapaddy/" target="_blank" rel="noopener">Instagram @wasedapaddy</a>
-        </div>
-        <p class="links"><a href="https://www.instagram.com/wasedapaddy/" target="_blank" rel="noopener">Instagram</a><a href="https://line.me/ti/g/DmyvrLE2XZ" target="_blank" rel="noopener">LINE</a><a href="https://www.linkedin.com/company/paddy-fielders-tea-party/" target="_blank" rel="noopener">LinkedIn</a></p>
       </div>
       <div class="qrs">
         <div class="qr"><img src="S__24264707.jpg" alt="LINE QRコード"><span>LINE QR</span></div>
